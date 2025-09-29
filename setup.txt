@@ -1,0 +1,124 @@
+apt update
+
+apt install -y build-essential
+
+apt install -y git-all
+git config --global user.email "jeongho.jang0404@gmail.com"
+git config --global user.name "JeonghoJang"
+mkdir git
+git clone https://github.com/comnhuman/kt_ai_agent_document_llm_writer.git
+
+wget -qO- https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+uv sync
+
+source .venv/bin/activate
+
+uv pip install vllm --torch-backend=auto
+vllm serve K-intelligence/Midm-2.0-Base-Instruct --gpu-memory-utilization 0.8
+
+# java 설치 필요
+# macOS
+brew install --cask libreoffice
+# macOS는 수동으로 h2orestart 설치 필요
+
+# linux
+sudo apt install libreoffice
+sudo apt install libreoffice-h2orestart
+
+
+
+apt update
+
+apt install -y build-essential
+
+apt install -y git-all
+mkdir git
+cd git
+mkdir my-volume
+cd my-volume
+
+wget -qO- https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+
+uv venv --python 3.12 --seed
+source .venv/bin/activate
+uv pip install vllm
+
+vllm serve K-intelligence/Midm-2.0-Base-Instruct --gpu-memory-utilization 0.9 --download-dir /root/git/my-volume --enable-auto-tool-choice --tool-call-parser llama3_json
+
+vllm serve meta-llama/Llama-3.1-8B-Instruct \
+    --enable-auto-tool-choice
+
+vllm serve K-intelligence/Midm-2.0-Base-Instruct --gpu-memory-utilization 0.8
+
+
+vllm serve K-intelligence/Midm-2.0-Base-Instruct --gpu-memory-utilization 0.9 --download-dir /root/git/my-volume --enable-auto-tool-choice --tool-call-parser xlam
+
+ https://docs.vllm.ai/en/stable/features/tool_calling.html#xlam-models-xlam
+
+
+vllm serve K-intelligence/Midm-2.0-Base-Instruct --gpu-memory-utilization 0.9 --download-dir /root/git/my-volume --enable-auto-tool-choice --tool-call-parser llama4_pythonic
+
+ vllm serve meta-llama/Llama-3.1-8B-Instruct \
+    --gpu-memory-utilization 0.9 \
+    --download-dir /root/git/my-volume \
+    --enable-auto-tool-choice \
+    --tool-call-parser llama3_json \
+    --chat-template /root/git/my-volume/tool_chat_template_llama3.1_json.jinja
+
+vllm serve skt/A.X-4.0-Light --enable-auto-tool-choice --tool-call-parser hermes --download-dir /root/git/my-volume
+
+
+
+
+
+apt-get update && apt-get upgrade -y && apt-get autoremove -y && apt-get autoclean
+apt-get install -y curl vim git
+apt-get install -y build-essential
+
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+apt-get update
+apt-get upgrade -y
+
+apt-get install -y build-essential git vim unzip
+
+wget -qO- https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+
+git config --global user.email "jeongho.jang0404@gmail.com"
+git config --global user.name "JeonghoJang"
+
+echo 'export HF_HOME=/root/git/llm/huggingface_home' >> ~/.bashrc
+
+mkdir git
+cd git
+git clone https://github.com/Je0ngh0/toss-next-ml-ctr.git
+cd toss-next-ml-ctr
+uv sync
+source .venv/bin/activate
+
+mkdir data
+mkdir data/processed
+cd data/processed
+
+gdown --fuzzy https://drive.google.com/file/d/1_Q2ZbPRztVysrrgvtnYUMRh8mVqH7TnV/view?usp=drive_link
+
+
+output_path = Path("./data/processed/train_after_iterative_imput.parquet")
+df.to_parquet(output_path, index=False)  # index=True는 필요에 따라 False로 해도 됨

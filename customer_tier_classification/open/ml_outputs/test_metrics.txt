@@ -1,0 +1,9 @@
+Accuracy: 0.4814Balanced Acc: 0.4733F1-macro: 0.4616Precision-macro: 0.4637Recall-macro: 0.4733LogLoss: 1.0286ROC-AUC (OVR macro): 0.6549Classification Report:              precision    recall  f1-score   support
+
+           0     0.6318    0.5154    0.5677      2860
+           1     0.3290    0.3032    0.3156      1659
+           2     0.4303    0.6013    0.5016      1653
+
+    accuracy                         0.4814      6172
+   macro avg     0.4637    0.4733    0.4616      6172
+weighted avg     0.4964    0.4814    0.4822      6172
