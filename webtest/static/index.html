@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>2D RPG 샘플 게임 (고도화)</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<div class="game-container">
+  <canvas id="game" width="960" height="540"></canvas>
+
+  <!-- HUD -->
+  <div id="hud">
+    <div>무기: <strong id="hud-weapon">-</strong></div>
+    <div>레벨: <strong id="hud-level">1</strong> (무기 Lv.<strong id="hud-weapon-level">1</strong>)</div>
+    <div>체력: <strong id="hud-hp-text">0 / 0</strong></div>
+    <div class="bar"><div id="hud-hp-bar" class="bar-fill-hp" style="width:0%"></div></div>
+    <div>경험치: <strong id="hud-exp-text">0 / 0</strong></div>
+    <div class="bar"><div id="hud-exp-bar" class="bar-fill-exp" style="width:0%"></div></div>
+    <div>Wave: <strong id="hud-wave">1</strong></div>
+    <div>악세서리: <strong id="hud-acc">없음</strong></div>
+    <div>슬롯: <strong id="hud-acc-slots">0 / 5</strong></div>
+  </div>
+
+  <!-- 조작법 힌트 -->
+  <div id="controls-hint">
+    이동: <span>← → / A D</span><br/>
+    점프: <span>↑ / W / Space</span><br/>
+    공격: <span>J</span><br/>
+    죽으면: <span>R</span> 키로 재시작
+  </div>
+
+  <!-- 무기 선택 패널 -->
+  <div id="weapon-panel" class="panel">
+    <h2>무기 선택</h2>
+    <p>시작할 무기를 고르세요. (나중에 변경 불가)</p>
+    <div class="btn-row">
+      <button data-weapon="sword">검 (근접, 안정적인 딜러)</button>
+      <button data-weapon="magic">마법 (원거리, 범위 딜)</button>
+      <button data-weapon="bow">활 (원거리, 빠른 투사체)</button>
+    </div>
+    <small>Wave 보스를 잡으면 악세서리를 선택/강화할 수 있습니다.</small>
+  </div>
+
+  <!-- 악세서리 선택 패널 (랜덤 3개 제공) -->
+  <div id="accessory-panel" class="panel hidden">
+    <h2>악세서리 선택</h2>
+    <p>보스를 처치했습니다!\n강화할 악세서리를 고르세요.</p>
+    <div class="btn-row">
+      <button data-choice-index="0"></button>
+      <button data-choice-index="1"></button>
+      <button data-choice-index="2"></button>
+    </div>
+    <small>장착된 악세서리 종류: <span id="acc-slot-count">0</span> / 5\n같은 악세서리는 무한히 강화할 수 있습니다.</small>
+  </div>
+
+  <!-- 메시지 패널 (게임 오버, 레벨업 등) -->
+  <div id="message-panel" class="panel hidden">
+    <h2 id="message-title"></h2>
+    <p id="message-text"></p>
+    <small>이 창을 클릭하면 닫힙니다.</small>
+  </div>
+</div>
+
+ <script src="/static/script.js"></script>
+</body>
+</html>
