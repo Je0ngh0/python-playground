@@ -1,0 +1,17 @@
+wget -qO- https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+
+uv sync
+uv pip install -U vllm --pre --extra-index-url https://wheels.vllm.ai/nightly
+source .venv/bin/activate
+
+# uv venv --python 3.12 --seed
+# source .venv/bin/activate
+# uv init
+
+# uv add vllm hf-transfer accelerate ipykernel
+
+git config --global user.email "jeongho.jang0404@gmail.com"
+git config --global user.name "JeonghoJang"
+
+uvicorn main:app --port 9803

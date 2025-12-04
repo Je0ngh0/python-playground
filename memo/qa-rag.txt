@@ -1,0 +1,34 @@
+uv venv --python 3.12 --seed
+uv init
+
+uv pip install -qU langchain-docling
+uv add langchain-milvus
+uv add langchain-openai
+uv add langgraph
+
+bash -c '
+    apt update;
+    apt install -y wget;
+    DEBIAN_FRONTEND=noninteractive apt-get install openssh-server -y;
+    mkdir -p ~/.ssh;
+    chmod 700 ~/.ssh;
+    echo "$PUBLIC_KEY" >> ~/.ssh/authorized_keys;
+    chmod 700 ~/.ssh/authorized_keys;
+    service ssh start;
+
+    apt install -y build-essential
+    apt install -y python3-dev
+
+    apt install -y git-all
+
+    wget -qO- https://astral.sh/uv/install.sh | sh;
+    source $HOME/.local/bin/env;
+
+    ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+    echo "Asia/Seoul" > /etc/timezone
+
+    sleep infinity
+'
+
+nvidia-smi --query-gpu=timestamp,name,utilization.gpu,temperature.gpu,memory.used,memory.free --format=csv,noheader -l
+export TZ=Asia/Seoul
