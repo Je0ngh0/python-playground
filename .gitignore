@@ -209,7 +209,5 @@ __marimo__/
 # macOS
 .DS_Store
 
-# vLLM
-vllm/
-
-sample/
+data/
+log/

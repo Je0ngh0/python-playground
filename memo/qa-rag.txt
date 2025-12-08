@@ -32,3 +32,6 @@ bash -c '
 
 nvidia-smi --query-gpu=timestamp,name,utilization.gpu,temperature.gpu,memory.used,memory.free --format=csv,noheader -l
 export TZ=Asia/Seoul
+
+tar -czvf chunks.tar.gz chunks/
+tar -xzvf chunks.tar.gz

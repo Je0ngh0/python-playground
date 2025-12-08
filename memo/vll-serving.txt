@@ -15,3 +15,37 @@ git config --global user.email "jeongho.jang0404@gmail.com"
 git config --global user.name "JeonghoJang"
 
 uvicorn main:app --port 9803
+
+export HF_HOME="/path/to/.cache/huggingface"
+
+# GPU 0 → PORT 9809
+CUDA_VISIBLE_DEVICES=0 nohup vllm serve deepseek-ai/DeepSeek-OCR \
+    --gpu-memory-utilization 0.95 \
+    --no-enable-prefix-caching \
+    --mm-processor-cache-gb 0 \
+    --port 9809 \
+    > vllm_9809.log 2>&1 &
+
+# GPU 1 → PORT 9810
+CUDA_VISIBLE_DEVICES=1 nohup vllm serve deepseek-ai/DeepSeek-OCR \
+    --gpu-memory-utilization 0.95 \
+    --no-enable-prefix-caching \
+    --mm-processor-cache-gb 0 \
+    --port 9810 \
+    > vllm_9810.log 2>&1 &
+
+# GPU 2 → PORT 9811
+CUDA_VISIBLE_DEVICES=2 nohup vllm serve deepseek-ai/DeepSeek-OCR \
+    --gpu-memory-utilization 0.95 \
+    --no-enable-prefix-caching \
+    --mm-processor-cache-gb 0 \
+    --port 9811 \
+    > vllm_9811.log 2>&1 &
+
+# GPU 3 → PORT 9812
+CUDA_VISIBLE_DEVICES=3 nohup vllm serve deepseek-ai/DeepSeek-OCR \
+    --gpu-memory-utilization 0.95 \
+    --no-enable-prefix-caching \
+    --mm-processor-cache-gb 0 \
+    --port 9812 \
+    > vllm_9812.log 2>&1 &
